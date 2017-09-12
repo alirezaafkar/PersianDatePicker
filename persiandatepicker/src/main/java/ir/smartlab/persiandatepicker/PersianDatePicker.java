@@ -17,7 +17,6 @@ import java.util.TimeZone;
 import ir.smartlab.persiandatepicker.util.PersianCalendar;
 import ir.smartlab.persiandatepicker.util.PersianCalendarConstants;
 import ir.smartlab.persiandatepicker.util.PersianCalendarUtils;
-import ir.smartlab.persiandatepicker.util.TimeZones;
 
 public class PersianDatePicker extends LinearLayout {
 
@@ -61,7 +60,7 @@ public class PersianDatePicker extends LinearLayout {
          */
         PersianCalendar pCalendar;
         timezone = a.getString(R.styleable.PersianDatePicker_timezone);
-        if( timezone == null || timezone.isEmpty()) {
+        if (timezone == null || timezone.isEmpty()) {
             pCalendar = new PersianCalendar();
         } else {
             pCalendar = new PersianCalendar(TimeZone.getTimeZone(timezone));
@@ -127,7 +126,7 @@ public class PersianDatePicker extends LinearLayout {
         dayNumberPicker.setOnValueChangedListener(dateChangeListener);
 
 		/*
-		 * displayDescription
+         * displayDescription
 		 */
         displayDescription = a.getBoolean(R.styleable.PersianDatePicker_displayDescription, false);
         if (displayDescription) {
@@ -250,6 +249,16 @@ public class PersianDatePicker extends LinearLayout {
         yearNumberPicker.setValue(year);
         monthNumberPicker.setValue(month);
         dayNumberPicker.setValue(day);
+    }
+
+    public void hideDayAndMonth() {
+        dayNumberPicker.setVisibility(View.GONE);
+        monthNumberPicker.setVisibility(GONE);
+    }
+
+    public void hideYearAndDay() {
+        dayNumberPicker.setVisibility(View.GONE);
+        yearNumberPicker.setVisibility(View.GONE);
     }
 
     @Override
